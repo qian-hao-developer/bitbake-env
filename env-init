@@ -1,0 +1,11 @@
+if [ ! -d "bitbake" ] || [ ! -e "bitbake/classes/base.bbclass" ] || [ ! -e "bitbake/conf/bitbake.conf" ]; then
+    echo "bitbake not set, please clone from github"
+    return 1
+fi
+
+export PATH=$PWD/bitbake/bin:$PATH
+export PYTHONPATH=$PWD/bitbake/lib:$PYTHONPATH
+
+if [ ! -z $1 ]; then
+    cd $(find $1 -type d -name "build")
+fi
